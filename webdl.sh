@@ -5,7 +5,7 @@ echo "Dicipta untuk idola pijanify"
 echo "Masukkan link MPD"
 read -r mpdlink
 #use ytdlp to check details of mpd link for vidID and audID
-yt-dlp --no-warnings --allow-u -f "$mpdlink"
+yt-dlp --no-warnings --allow-u -F "$mpdlink"
 #ask user to input vidID and audID from the output of ytdlp
 echo "Masukkan VideoID"
 read -r vidID
