@@ -11,10 +11,6 @@ echo "Masukkan VideoID:"
 read -r vidID
 echo "Masukkan AudioID:"
 read -r audID
-echo "Masukkan nama video yang ingin digunakan:"
-read -r videoOut
-echo "Masukkan nama audio yang ingin digunakan:"
-read -r audioOut
 #start to download stuff using ytdlp and add new method to download both video and audio
 yt-dlp --allow-u "$vidID"+"$audID" "$MPD" -o d -N 20
 #start to decrypt video and audio using mp4decrypt
@@ -26,6 +22,7 @@ mp4decrypt --show-progress --key "$key" d.*.mp4 dec.mp4 && mp4decrypt --show-pro
 echo "Mulakan penggabungan video dan audio"
 echo "Masukkan nama file complete yang anda inginkan:"
 read -r finalvidName
-ffmpeg -v quiet -stats -i "$videoDec" -i "$audioDec" -c copy "$finalvidName" 
+ffmpeg -v quiet -stats -i dec.mp4 -i dec.m4a -c copy "$finalvidName" 
 mv -v "$finalvidName" /var/content/www/html/
 echo "Siap boss. Selamat merilis :)"
+rm *.mp4 *.m4a
