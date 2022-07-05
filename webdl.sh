@@ -23,6 +23,6 @@ echo "Mulakan penggabungan video dan audio"
 echo "Masukkan nama file complete yang anda inginkan:"
 read -r finalvidName
 ffmpeg -v quiet -stats -i dec.mp4 -i dec.m4a -c copy "$finalvidName" 
-mv -v "$finalvidName" /var/content/www/html/
+mv -v "$finalvidName" /var/www/html/
 echo "Siap boss. Selamat merilis :)"
 rm *.mp4 *.m4a
