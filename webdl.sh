@@ -12,7 +12,7 @@ read -r vidID
 echo "Masukkan AudioID:"
 read -r audID
 #start to download stuff using ytdlp and add new method to download both video and audio
-yt-dlp --allow-u "$vidID"+"$audID" "$MPD" -o d -N 20
+yt-dlp --allow-u "$vidID"+"$audID" "$MPD" -o -f d -N 20
 #start to decrypt video and audio using mp4decrypt
 echo "Masukkan KID:KEY yang anda dapat:"
 read -r key
