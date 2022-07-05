@@ -22,7 +22,6 @@ mp4decrypt --show-progress --key "$key" d.*.mp4 dec.mp4 && mp4decrypt --show-pro
 echo "Mulakan penggabungan video dan audio"
 echo "Masukkan nama file complete yang anda inginkan:"
 read -r finalvidName
-ffmpeg -v quiet -stats -i dec.mp4 -i dec.m4a -c copy "$finalvidName" 
-mv -v "$finalvidName" /var/www/html/
+ffmpeg -v quiet -stats -i dec.mp4 -i dec.m4a -c copy /var/www/html/$finalvidName 
 echo "Siap boss. Selamat merilis :)"
 rm *.mp4 *.m4a
