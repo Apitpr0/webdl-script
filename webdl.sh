@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Selamat datang ke script webdl versi Linux yang diadaptasi dari Windows"
-echo "Dicipta untuk idola pijanify"
+echo "Tool sebenar untuk ripping"
 #create variable to get mpd link
 echo "Masukkan link MPD:"
 read -r mpdlink
