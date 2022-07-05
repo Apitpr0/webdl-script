@@ -5,15 +5,21 @@ echo Parsing mpd menggunakan yt-dlp dijalankan
 yt-dlp --no-warnings --allow-u -F %mpd% 
 set /p videoID=Masukkan Video ID:
 set /p audioID=Masukkan Audio ID:
-echo Memulakan muat turun audio dan video serentak menggunakan yt-dlp
-yt-dlp --no-warnings --allow-u -f %videoID%+%audioID% %mpd% -o d --downloader aria2c
+set /p videoOut=Video File Output:
+set /p audioOut=Audio File Output:
+echo Memulakan muat turun audio dan video menggunakan yt-dlp
+yt-dlp --no-warnings --allow-u -f %videoID% %mpd% -o %videoOut% 
+yt-dlp --no-warnings --allow-u -f %audioID% %mpd% -o %audioOut% 
+echo Mula untuk proses decrypt
 set /p key=Masukkan KID:KEY yang anda dapat:
+set /p videofinal=Nama file video yang anda ingin selepas decrypt: 
+set /p audiofinal=Nama file audio yang anda ingin selepas decrypt: 
 echo Decrypt video dimulakan
-mp4decrypt --show-progress --key %key% d.*.mp4 dec.mp4
+mp4decrypt --show-progress --key %key% %videoOut% %videofinal%
 echo Decrypt audio dimulakan
-mp4decrypt --show-progress --key %key% d.*.m4a dec.m4a
+mp4decrypt --show-progress --key %key% %audioOut% %audiofinal%
 echo Memulakan Penggabungan video dan audio
 set /p done=Masukkan nama file complete yang anda inginkan beserta format:
-ffmpeg -v quiet -stats -i dec.mp4 -i dec.m4a -c copy %done%
+ffmpeg -v quiet -stats -i %videofinal% -i %audiofinal% -c copy %done%
 echo Selesai!, Selamat merilis
 pause
